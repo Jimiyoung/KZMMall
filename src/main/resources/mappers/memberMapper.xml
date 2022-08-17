@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.javagreenS_jmy.dao.MemberDAO">
+
+	<select id="getMemIdCheck" resultType="com.spring.javagreenS_jmy.vo.MemberVO">
+		select * from member2 where mid = #{mid};
+	</select>
+
+	<select id="getMemEmailFind" resultType="com.spring.javagreenS_jmy.vo.MemberVO" >
+	 select * from member2 where name=#{name} and email=#{email};
+	</select>
+	
+	<select id="getMemTelFind" resultType="com.spring.javagreenS_jmy.vo.MemberVO" >
+	 select * from member2 where name=#{name} and tel=#{tel};
+	</select>
+	
+	<select id="getMemPwdFind" resultType="com.spring.javagreenS_jmy.vo.MemberVO">
+		select * from member2 where name=#{name} and mid=#{mid} and email=#{toMail}; 
+	</select>
+
+	<select id="getAdminMemberLevelList" resultType="com.spring.javagreenS_jmy.vo.MemberVO">
+		<if test="level == 99">select *,TIMESTAMPDIFF(DAY, lastDate, NOW()) as applyDiff from member2 limit #{startIndexNo}, #{pageSize}; </if>
+		<if test="level != 99">select *,TIMESTAMPDIFF(DAY, lastDate, NOW()) as applyDiff from member2 where level = #{level} limit #{startIndexNo}, #{pageSize}; </if>
+	</select>
+
+	<select id="getAdminMemberMidList" resultType="com.spring.javagreenS_jmy.vo.MemberVO">
+		<if test="mid == ''">select * from member2 limit #{startIndexNo}, #{pageSize}; </if>
+		<if test="mid != ''">select * from member2 where mid = #{mid} limit #{startIndexNo}, #{pageSize}; </if>
+	</select>
+
+	<select id="totRecCntAdminMemberList" resultType="int">
+		<if test="level == 99">select count(*) from member2; </if>
+		<if test="level != 99">select count(*) from member2 where level = #{level}; </if>
+	</select>
+
+	<select id="totRecCntAdminMemberMidList" resultType="int">
+		<if test="mid == ''">select count(*) from member2; </if>
+		<if test="mid != ''">select count(*) from member2 where mid = #{mid}; </if>
+	</select>
+
+	<select id="getMemInfor" resultType="com.spring.javagreenS_jmy.vo.MemberVO">
+		select * from member2 where idx=#{idx};
+	</select>
+	
+	<select id="getMemberInfor" resultType="com.spring.javagreenS_jmy.vo.MemberVO">
+		select * from member2 where mid = #{mid};
+	</select>
+	
+	<select id="getTodayVisitDate" resultType="String">
+		SELECT substring(visitDate,1,10) as visitDate FROM visit ORDER BY visitDate DESC LIMIT 1;
+	</select>
+	
+	<select id="getMemEmailCheck" resultType="com.spring.javagreenS_jmy.vo.MemberVO" >
+		select * from member2 where email = #{email} limit 1; 
+	</select>
+	
+
+
+	<insert id="setMemInputOk">
+		insert into member2 values(default, #{vo.mid},#{vo.pwd},#{vo.name},#{vo.tel},#{vo.email},#{vo.address},default,default,default,default,default);
+	</insert>
+	
+	<insert id="setKakaoMemberInputOk">
+		insert into member2 values(default, #{mid},#{pwd},#{name},#{tel},#{email},#{address},default,default,default,default,default);
+	</insert>
+	
+	<insert id="setTodayVisitCountInsert">
+		insert into visit values (date(now()),default);
+	</insert>
+	
+	<insert id="setQrCode">
+		insert into qrCode values (#{idx}, #{qrCode});
+	</insert>
+	
+	
+	<update id="setMemberVisitProcess">
+		update member2 set lastDate = now() where mid=#{vo.mid};
+	</update>
+	
+	<update id="setMemPwdChange">
+		update member2 set pwd = #{changePwd} where mid=#{mid};
+	</update>
+	
+	<update id="setMemUpdateOk">
+		update member2 set name=#{vo.name}, tel=#{vo.tel}, email=#{vo.email}, address=#{vo.address} where mid=#{vo.mid};
+	</update>
+	
+	<update id="setMemDeleteOk">
+		update member2 set userDel='OK' where mid=#{mid};
+	</update>
+	
+	<update id="setPwdChange">
+		update member2 set pwd = #{pwd} where mid=#{mid};
+	</update>
+	
+	<update id="setAdminLevelUpdate">
+		update member2 set level = #{level} where idx = #{idx}; 
+	</update>
+	
+  <update id="setTodayVisitCountUpdate">
+    update visit set visitCount = visitCount + 1 where substring(visitDate,1,10) = #{strToday};
+  </update>
+  
+	
+	
+	<delete id="setMemberReset">
+		delete from member2 where idx=#{idx};
+	</delete>
+</mapper>

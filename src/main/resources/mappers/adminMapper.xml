@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.javagreenS_jmy.dao.AdminDAO">
+	<select id="getRecentlyVisitCount" resultType="com.spring.javagreenS_jmy.vo.ChartVO">
+		select substring(visitDate,1,10) as visitDate, visitCount from visit order by visitDate desc limit 7; 
+	</select>
+</mapper>

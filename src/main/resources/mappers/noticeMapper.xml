@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.javagreenS_jmy.dao.NoticeDAO">
+	<select id="totRecCnt" resultType="int">
+		select count(*) from notice2;
+	</select>
+
+	<select id="getNoticeList" resultType="com.spring.javagreenS_jmy.vo.NoticeVO">
+		select *,cast(TIMESTAMPDIFF(MINUTE,wDate,NOW())/60 as signed integer) AS diffTime from notice2 order by pin desc, idx desc limit #{startIndexNo},#{pageSize}; 
+	</select>
+	
+	<select id="getNoticeContent" resultType="com.spring.javagreenS_jmy.vo.NoticeVO">
+		select * from notice2 where idx = #{idx};
+	</select>
+	
+	<select id="getPreNext" resultType="com.spring.javagreenS_jmy.vo.NoticeVO">
+		select idx, title from notice2 where idx in(
+			(select idx from notice2 where <![CDATA[idx < #{idx}]]> order by idx desc limit 1),
+			(select idx from notice2 where <![CDATA[idx > #{idx}]]> limit 1));
+	</select>
+	
+	<select id="getMinIdx" resultType="int">
+		select min(idx) from notice2;
+	</select>
+	
+	 <select id="totSearchRecCnt" resultType="int">
+    select count(*) from notice2 where ${search} like concat('%',#{searchString},'%');
+  </select>
+  
+  <select id="getNoticeSearch" resultType="com.spring.javagreenS_jmy.vo.NoticeVO">
+  	select *, cast(TIMESTAMPDIFF(MINUTE,wDate,NOW())/60 as signed integer) AS diffTime from notice2 where ${search} like concat('%',#{searchString},'%') order by idx desc limit #{startIndexNo},#{pageSize}; 
+  </select>
+  
+	<insert id="setNoticeInput">
+		insert into notice2 values(default,#{vo.name},#{vo.title},#{vo.content},default,default,#{vo.mid},#{vo.pin})
+	</insert>
+		
+		
+	<update id="setReadNum">
+		update notice2 set readNum = readNum+1 where idx = #{idx};
+	</update>
+	
+	<update id="setNoticeUpdate">
+		update notice2 set title=#{vo.title}, content=#{vo.content}, pin=#{vo.pin} where idx=#{vo.idx};
+	</update>
+	
+	
+	<delete id="setNoticeDelete">
+		delete from notice2 where idx = #{idx};
+	</delete>
+</mapper>

@@ -17,6 +17,5 @@
 </div>
 <div>
    <b>메인화면</b>
-  <img src=""
-![image](https://user-images.githubusercontent.com/102267926/201290230-a0132d45-ff5a-4d5e-a14c-0caaaae1811e.png)
+ ![image](https://user-images.githubusercontent.com/102267926/201290313-37ce17b5-8c59-46e9-8c5b-4b7a9c378422.png)
 </div>

@@ -24,5 +24,5 @@
 <hr/>
 <div>
    ![image](https://user-images.githubusercontent.com/102267926/201305794-833596ff-27b6-4c75-a9d4-f6b4893135a5.png)
- 
+  <img src="https://user-images.githubusercontent.com/102267926/201305794-833596ff-27b6-4c75-a9d4-f6b4893135a5.png"/> 
 </div>

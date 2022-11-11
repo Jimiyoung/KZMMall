@@ -6,7 +6,7 @@
   </ul>
 </div>
 <div>
-  <h2><b>개발환경</b></h2>
+  <h3><b>개발환경</b></h3>
   <ul>
     <li>개발언어: JAVA ver1.8</li>
     <li>프로그램: STS4(4.3.14 Release)</li>
@@ -16,6 +16,6 @@
   </ul>
 </div>
 <div>
-  <h2><b>메인화면</b></h2>
+  <h3><b>메인화면</b></h3>
   <img src="https://user-images.githubusercontent.com/102267926/201305794-833596ff-27b6-4c75-a9d4-f6b4893135a5.png"/> 
 </div>

@@ -6,7 +6,7 @@
   </ul>
 </div>
 <div>
-  개발환경
+  <b>개발환경</b>
   <ul>
     <li>개발언어: JAVA ver1.8</li>
     <li>프로그램: STS4(4.3.14 Release)</li>

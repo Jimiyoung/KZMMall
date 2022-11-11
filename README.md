@@ -16,7 +16,6 @@
   </ul>
 </div>
 <div>
-   <b>메인화면</b>
-  ![image](https://user-images.githubusercontent.com/102267926/201305794-833596ff-27b6-4c75-a9d4-f6b4893135a5.png)
+  <b>메인화면</b>
   <img src="https://user-images.githubusercontent.com/102267926/201305794-833596ff-27b6-4c75-a9d4-f6b4893135a5.png"/> 
 </div>

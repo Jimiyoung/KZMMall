@@ -3,7 +3,7 @@
   <ul>
     <li>SpringFrameWork 개인프로젝트</li>
     <li>개발기간: 2022.06.27.~2022.08.04</li>
-    <li><a href="http://49.142.157.251:9090/javagreenS_jmy/">kzmMall바로가기 (관리자 아이디: admin / 관리자 비밀번호: qwer1234!)</a></li>
+    <li><a href="http://49.142.157.251:9090/javagreenS_jmy/">kzmMall바로가기</a> (관리자 아이디: admin / 관리자 비밀번호: qwer1234!)</li>
     <li><a href="https://www.youtube.com/watch?v=tTyNT_N5Aws">kzmMall영상(youtube)</a></li>
   </ul>
 </div>
